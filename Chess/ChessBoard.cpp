@@ -35,7 +35,7 @@ void ChessBoard::vDisplayBoard(void)
 				count = 0;
 			}
 
-			cout << "   ";
+			cout << " A "; //Actual piece to be drawn
 		}
 
 		if (count == 0) count = 1;
