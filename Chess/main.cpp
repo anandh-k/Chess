@@ -9,7 +9,9 @@ using namespace std;
 int main(void)
 {
 	ChessBoard B;
+	BoardStatus S;
 
+	B.InsertDepInjection(&S);
 	B.vDisplayBoard();
 	
 	
