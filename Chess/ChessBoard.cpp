@@ -50,9 +50,11 @@ void ChessBoard::vDisplayBoard(void)
 				count = 0;
 			}
 
-			int currPiece = this->pCurrStatus->GetPieceAt( (i-1) + 'A', j);
-			
-			this->DisplayPiece((PieceEnum)currPiece);
+			Piece *pPiece = this->pCurrStatus->GetCharAt((i - 1) + 'A', j);
+			this->DisplayPiece(pPiece);
+
+			/*int currPiece = this->pCurrStatus->GetPieceAt( (i-1) + 'A', j);			
+			this->DisplayPiece((PieceEnum)currPiece);*/
 		}
 
 		if (count == 0) count = 1;
@@ -106,4 +108,12 @@ void ChessBoard::DisplayPiece(PieceEnum PieceEnumVal)
 		break;
 	}
 	//cout << " A "; //Actual piece to be drawn
+}
+
+void ChessBoard::DisplayPiece(Piece* pPiece)
+{
+	if(pPiece)
+		pPiece->DisplayCoin();
+	else
+		cout << "   ";
 }

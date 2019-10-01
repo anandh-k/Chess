@@ -1,9 +1,12 @@
+#include <iostream>
 #include "Rook.h"
+#include "typedefs.h"
 
-
+using namespace std;
 
 Rook::Rook()
 {
+	this->mType = (int)enRook;//later change to just rook
 }
 
 
@@ -19,4 +22,9 @@ bool Rook::boIsMoveValid(unsigned int SrcRow, char SrcCol, unsigned int DstRow, 
 		boValidMove = true;
 
 	return boValidMove;
+}
+
+void Rook::DisplayCoin()
+{
+	cout << " R ";
 }

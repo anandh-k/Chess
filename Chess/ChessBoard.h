@@ -10,8 +10,11 @@ public:
 	ChessBoard();
 	~ChessBoard();
 	void InsertDepInjection(BoardStatus* pDepObject);
+	
 protected:	
 	void DisplayPiece(PieceEnum PieceEnumVal);
+	void DisplayPiece(Piece* Piece);
+	
 private:
 	BoardStatus* pCurrStatus;
 };

@@ -7,5 +7,6 @@ public:
 	Rook();
 	~Rook();
 	bool boIsMoveValid(unsigned int SrcRow, char SrcCol, unsigned int DstRow, char DstCol);
+	void DisplayCoin();
 };
 

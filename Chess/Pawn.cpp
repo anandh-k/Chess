@@ -1,9 +1,13 @@
+#include <iostream>
+
 #include "Pawn.h"
+#include "typedefs.h"
 
-
+using namespace std;
 
 Pawn::Pawn()
 {
+	this->mType = (int)enPawn;//later change to just pawn
 }
 
 
@@ -19,4 +23,9 @@ bool Pawn::boIsMoveValid(unsigned int SrcRow, char SrcCol, unsigned int DstRow, 
 	if ((SrcRow == (DstRow-1)) && (SrcCol == DstCol))
 		boValidMove = true;
 	return boValidMove;
+}
+
+void Pawn::DisplayCoin()
+{
+	cout << " P ";
 }

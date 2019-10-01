@@ -4,6 +4,8 @@ typedef
 enum
 {
 	Empty_Place = 0,
+	enPawn,
+	enRook,
 	Black_Pawn,
 	Black_Rook,
 	Black_Knight,

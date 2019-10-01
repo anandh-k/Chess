@@ -1,9 +1,27 @@
 #include "BoardStatus.h"
-
 #include <iostream>
+#include "Rook.h"
+#include "Pawn.h"
 
 BoardStatus::BoardStatus()
 {
+	memset(mPiece, NULL, sizeof(Piece*) * 8 * 8);
+
+	mPiece[0][0] = new Rook();//Black_Rook; //0 0
+	//mPiece[0][1] = Black_Knight; //0 1
+	/*mPiece[0][2] = Black_Bishop;
+	mPiece[0][3] = Black_King;
+	mPiece[0][4] = Black_Queen;
+	mPiece[0][5] = Black_Bishop;
+	mPiece[0][6] = Black_Knight;*/
+	mPiece[0][7] = new Rook();
+
+	for (int i = 0; i < 8; i++)
+	{
+		mPiece[1][i] = new Pawn();
+	}
+
+
 	memset(mPieceInfo, Empty_Place, sizeof(mPieceInfo));
 	
 	mPieceInfo[0][0] = Black_Rook; //0 0
@@ -25,6 +43,35 @@ BoardStatus::BoardStatus()
 
 BoardStatus::~BoardStatus()
 {
+}
+
+Piece* BoardStatus::GetCharAt(char Row, int Col)
+{
+	Piece* pPiece = NULL;
+	bool boValidOp = this->boIsValidPos(Row, Col);
+
+	if (boValidOp)
+	{
+		int row, col;
+		this->ConvertPos(Row, Col, row, col);
+		pPiece = this->mPiece[row][col];
+	}
+
+	return pPiece;
+}
+
+bool BoardStatus::SetCharAt(Piece* pPiece, char Row, int Col)
+{
+	bool boValid = this->boIsValidPos(Row, Col);
+
+	if (boValid)
+	{
+		int row, col;
+		this->ConvertPos(Row, Col, row, col);
+		this->mPiece[row][col] = pPiece;
+	}
+
+	return boValid;
 }
 
 int BoardStatus::GetPieceAt(char Row, int Col)

@@ -1,5 +1,15 @@
 #include "Piece.h"
 
+//bool Piece::boIsMoveValid(unsigned int SrcRow, char SrcCol, unsigned int DstRow, char DstCol)
+//{
+//	return false;
+//}
+
+int Piece::GetType()
+{
+	return this->mType;
+}
+
 bool Piece::boMove(string Src, string Dst)
 {
 	bool boMoveSuccess = true;
