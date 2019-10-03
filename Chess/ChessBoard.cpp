@@ -20,6 +20,38 @@ ChessBoard::~ChessBoard()
 	this->pCurrStatus = NULL;
 }
 
+void ChessBoard::vDisplayBoard1(void)
+{
+	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	int count = 0;
+
+	for (int row = 0; row < 8; row++)
+	{		
+		cout << "\t ";		
+		cout << row;
+		cout << "  ";//Border
+
+		for (int column = 0; column < 8; column++)
+		{
+			if ((row == 0) )
+			{
+				cout << " P ";
+			}
+		}
+
+		cout << "  " << endl;//Border
+	}
+	
+	cout << "\t  ";
+	
+	cout << "                            \n";
+	
+	cout << "\t";
+
+	cout << "     A  B  C  D  E  F  G  H  \n";
+}
+
 void ChessBoard::vDisplayBoard(void)
 {
 	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);	

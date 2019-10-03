@@ -7,6 +7,7 @@ class ChessBoard
 {
 public:
 	void vDisplayBoard(void);
+	void vDisplayBoard1(void);
 	ChessBoard();
 	~ChessBoard();
 	void InsertDepInjection(BoardStatus* pDepObject);

@@ -12,12 +12,13 @@ int main(void)
 	BoardStatus S;
 
 	B.InsertDepInjection(&S);
-	B.vDisplayBoard();
-	
-	//A2 to A3
-	S.Move("A2", "A3");
+	//B.vDisplayBoard();
+	B.vDisplayBoard1();
+	//
+	////A2 to A3
+	//S.Move("A2", "A3");
 
-	B.vDisplayBoard();
+	//B.vDisplayBoard();
 	
 	
 	
