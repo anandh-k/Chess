@@ -2,6 +2,7 @@
 
 #include "typedefs.h"
 #include "Piece.h"
+#include <iostream>
 
 class BoardStatus
 {
@@ -14,10 +15,11 @@ protected:
 public:
 	Piece* GetCharAt(char Row, int Col);
 	bool SetCharAt(Piece* Piece, char Row, int Col);
+	bool Move(std::string Src, std::string Dst);
 
 
-	int GetPieceAt(char Row, int Col);
-	bool SetPieceAt(int Piece, char Row, int Col);
+	/*int GetPieceAt(char Row, int Col);
+	bool SetPieceAt(int Piece, char Row, int Col);*/
 private:
 	bool boIsValidPos(char Row, int Col);
 	void ConvertPos(char Row, int Col, int& row, int& col);

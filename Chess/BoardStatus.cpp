@@ -8,14 +8,15 @@ BoardStatus::BoardStatus()
 	memset(mPiece, NULL, sizeof(Piece*) * 8 * 8);
 
 	mPiece[0][0] = new Rook();//Black_Rook; //0 0
+	mPiece[0][1] = new Rook();
 	//mPiece[0][1] = Black_Knight; //0 1
 	/*mPiece[0][2] = Black_Bishop;
 	mPiece[0][3] = Black_King;
 	mPiece[0][4] = Black_Queen;
 	mPiece[0][5] = Black_Bishop;
 	mPiece[0][6] = Black_Knight;*/
-	mPiece[0][7] = new Rook();
-
+	//mPiece[0][7] = new Rook();
+#if 0
 	for (int i = 0; i < 8; i++)
 	{
 		mPiece[1][i] = new Pawn();
@@ -37,7 +38,7 @@ BoardStatus::BoardStatus()
 	{
 		mPieceInfo[1][i] = Black_Pawn;
 	}
-
+#endif
 	//mPieceInfo[1][0] = Black_Pawn; //1 0
 }
 
@@ -54,7 +55,7 @@ Piece* BoardStatus::GetCharAt(char Row, int Col)
 	{
 		int row, col;
 		this->ConvertPos(Row, Col, row, col);
-		pPiece = this->mPiece[row][col];
+		pPiece = this->mPiece[col][row];
 	}
 
 	return pPiece;
@@ -68,41 +69,70 @@ bool BoardStatus::SetCharAt(Piece* pPiece, char Row, int Col)
 	{
 		int row, col;
 		this->ConvertPos(Row, Col, row, col);
-		this->mPiece[row][col] = pPiece;
+		this->mPiece[col][row] = pPiece;
 	}
 
 	return boValid;
 }
 
-int BoardStatus::GetPieceAt(char Row, int Col)
+bool BoardStatus::Move(std::string Src, std::string Dst)
 {
-	int Piece = Empty_Place;
-	bool boValidOp = this->boIsValidPos(Row, Col);
+	Piece* pPiece = NULL;
+	bool boValid = false;
+	const char* ptr = Src.data();
 
-	if (boValidOp)
+	char srcRow, dstRow;
+	int srcCol, dstCol;
+
+	srcRow = ptr[0];
+	srcCol = ptr[1] - '0';
+
+	ptr = Dst.data();
+
+	dstRow = ptr[0];
+	dstCol = ptr[1] - '0';
+
+	pPiece = this->GetCharAt(srcRow, srcCol);
+
+	if (pPiece)
 	{
-		int row, col;
-		this->ConvertPos(Row, Col, row, col);
-		Piece = this->mPieceInfo[row][col];
-	}
-	
-	return Piece;
-}
-
-
-bool BoardStatus::SetPieceAt(int Piece, char Row, int Col)
-{
-	bool boValid = (this->boIsValidPos(Row, Col)) && (Piece < InvalidPiece);
-	
-	if (boValid)
-	{
-		int row, col;
-		this->ConvertPos(Row, Col, row, col);
-		this->mPieceInfo[row][col] = (unsigned char) Piece;
+		if (pPiece->boMove(Src, Dst)) //valid?
+			this->SetCharAt(pPiece, dstRow, dstCol);
 	}
 
-	return boValid;
+
+	return false;
 }
+
+//int BoardStatus::GetPieceAt(char Row, int Col)
+//{
+//	int Piece = Empty_Place;
+//	bool boValidOp = this->boIsValidPos(Row, Col);
+//
+//	if (boValidOp)
+//	{
+//		int row, col;
+//		this->ConvertPos(Row, Col, row, col);
+//		Piece = this->mPieceInfo[row][col];
+//	}
+//	
+//	return Piece;
+//}
+//
+//
+//bool BoardStatus::SetPieceAt(int Piece, char Row, int Col)
+//{
+//	bool boValid = (this->boIsValidPos(Row, Col)) && (Piece < InvalidPiece);
+//	
+//	if (boValid)
+//	{
+//		int row, col;
+//		this->ConvertPos(Row, Col, row, col);
+//		this->mPieceInfo[row][col] = (unsigned char) Piece;
+//	}
+//
+//	return boValid;
+//}
 
 
 bool BoardStatus::boIsValidPos(char Row, int Col)
