@@ -14,7 +14,9 @@ protected:
 	unsigned char mPieceInfo[8][8];
 public:
 	Piece* GetCharAt(char Row, int Col);
+	Piece* GetCharAt(unsigned int row, unsigned int col);
 	bool SetCharAt(Piece* Piece, char Row, int Col);
+	bool SetCharAt(Piece* pPiece, unsigned int row, unsigned int col);
 	bool Move(std::string Src, std::string Dst);
 
 

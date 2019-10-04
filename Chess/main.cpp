@@ -16,7 +16,7 @@ int main(void)
 	B.vDisplayBoard1();
 	//
 	////A2 to A3
-	//S.Move("A2", "A3");
+	S.Move("A7", "A6");
 
 	//B.vDisplayBoard();
 	
