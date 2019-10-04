@@ -34,10 +34,8 @@ void ChessBoard::vDisplayBoard1(void)
 
 		for (int column = 0; column < 8; column++)
 		{
-			if ((row == 0) )
-			{
-				cout << " P ";
-			}
+			Piece* pPiece = this->pCurrStatus->GetCharAt((unsigned int)row, (unsigned int)column);
+			this->DisplayPiece(pPiece);
 		}
 
 		cout << "  " << endl;//Border
