@@ -3,6 +3,8 @@
 #include "Rook.h"
 #include "Pawn.h"
 
+#include "Utilities.h"
+
 BoardStatus::BoardStatus()
 {
 	memset(mPiece, NULL, sizeof(Piece*) * 8 * 8);
@@ -104,35 +106,26 @@ bool BoardStatus::Move(std::string Src, std::string Dst)
 	return false;
 }
 
-//int BoardStatus::GetPieceAt(char Row, int Col)
-//{
-//	int Piece = Empty_Place;
-//	bool boValidOp = this->boIsValidPos(Row, Col);
-//
-//	if (boValidOp)
-//	{
-//		int row, col;
-//		this->ConvertPos(Row, Col, row, col);
-//		Piece = this->mPieceInfo[row][col];
-//	}
-//	
-//	return Piece;
-//}
-//
-//
-//bool BoardStatus::SetPieceAt(int Piece, char Row, int Col)
-//{
-//	bool boValid = (this->boIsValidPos(Row, Col)) && (Piece < InvalidPiece);
-//	
-//	if (boValid)
-//	{
-//		int row, col;
-//		this->ConvertPos(Row, Col, row, col);
-//		this->mPieceInfo[row][col] = (unsigned char) Piece;
-//	}
-//
-//	return boValid;
-//}
+Piece* BoardStatus::GetPieceAt(std::string Pos)
+{
+	unsigned int row, col;
+	Piece* Piece = 0;
+
+	Utilities::ConvertPos(Pos, &row, &col);
+	
+	
+	return Piece;
+}
+
+
+bool BoardStatus::SetPieceAt(Piece *pPiece, std::string)
+{
+	bool boValid = false;
+	
+	
+
+	return boValid;
+}
 
 
 bool BoardStatus::boIsValidPos(char Row, int Col)
